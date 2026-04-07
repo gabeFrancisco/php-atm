@@ -46,7 +46,7 @@ class Router
                     $methodName = $action[1];
 
                     $controller = new $controllerName();
-                    return $controller->methodName();
+                    return $controller->$methodName();
                 }
             }
         }
