@@ -14,7 +14,7 @@
         <div>
             <p class="text-sm mt-2">Prossiga com o login abaixo:</p>
             <form action="POST" class="pt-5 my-3 border-t border-slate-200">
-                <div class="flex flex-row justify-between mb-5">
+                <div class="flex flex-row justify-between mb-3">
                     <label for="conta">CPF/CNPJ</label>
                     <input type="text" id="conta" name="conta" class="rounded border p-0.5 ml-2 border-slate-400">
                 </div>
