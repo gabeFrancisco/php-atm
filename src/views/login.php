@@ -9,8 +9,8 @@
 </head>
 
 <body class="bg-gradient-to-br from-blue-700 to-blue-400 flex flex-col justify-center items-center w-screen h-screen">
-    <div class="-mt-52 p-5 shadow-lg bg-white  rounded flex flex-col justify-center items-center">
-        <h3 class="text-indigo-700">PHP-ATM</h3>
+    <div class="-mt-52 p-5 shadow-xl bg-white  rounded flex flex-col justify-center items-center">
+        <img class="w-48 ml-5 mb-3" src="assets/logo.png" alt="Logo" />
         <div>
             <p class="text-sm mt-2">Prossiga com o login abaixo:</p>
             <form action="POST" class="pt-5 my-3 border-t border-slate-200">
