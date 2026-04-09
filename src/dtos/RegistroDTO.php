@@ -19,7 +19,8 @@ class RegistroDTO
             sobrenome: htmlspecialchars(trim($data['sobrenome'])),
             email: filter_var($data['email'], FILTER_VALIDATE_EMAIL) ?: throw new InvalidArgumentException("Email inválido!"),
             cpf: htmlspecialchars(trim($data['cpf'])),
-            senha: htmlspecialchars(trim($data['senha']))
+            senha: htmlspecialchars(trim($data['senha'])),
+            endereco: EnderecoDTO::fromRequest($data)
         );
     }
 }

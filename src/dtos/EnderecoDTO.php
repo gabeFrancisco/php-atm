@@ -2,29 +2,28 @@
 
 class EnderecoDTO
 {
-    public $rua;
-    public $numero;
-    public $complemento;
-    public $bairro;
-    public $cidade;
-    public $estado;
-    public $cep;
-
     public function __construct(
-        string $rua,
-        string $numero,
-        string $complemento,
-        string $bairro,
-        string $cidade,
-        string $estado,
-        string $cep
+        public string $rua,
+        public string $numero,
+        public string $complemento,
+        public string $bairro,
+        public string $cidade,
+        public string $estado,
+        public string $cep
     ) {
-        $this->rua = $rua;
-        $this->numero = $numero;
-        $this->complemento = $complemento;
-        $this->bairro = $bairro;
-        $this->cidade = $cidade;
-        $this->estado = $estado;
-        $this->cep = $cep;
+
+    }
+
+    public static function fromRequest(array $data)
+    {
+        return new self(
+            rua: htmlspecialchars(trim($data['rua'])),
+            numero: htmlspecialchars(trim($data['numero'])),
+            complemento: htmlspecialchars(trim($data['complemento'])),
+            bairro: htmlspecialchars(trim($data['bairro'])),
+            cidade: htmlspecialchars(trim($data['cidade'])),
+            estado: htmlspecialchars(trim($data['estado'])),
+            cep: htmlspecialchars(trim($data['cep'])),
+        );
     }
 }
