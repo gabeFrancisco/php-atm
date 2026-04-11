@@ -1,5 +1,7 @@
 <?php
 
+namespace App\DTOs;
+
 class EnderecoDTO
 {
     public function __construct(

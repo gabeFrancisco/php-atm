@@ -1,5 +1,9 @@
 <?php
 
+namespace App\DTOs;
+
+use InvalidArgumentException;
+
 class RegistroDTO
 {
     public function __construct(

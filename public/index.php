@@ -2,8 +2,10 @@
 
 //Autoload manual
 
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../Router.php';
-require_once __DIR__ . '/../src/controllers/AuthController.php';
+
+use App\Controllers\AuthController;
 
 $router = new Router();
 

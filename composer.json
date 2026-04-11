@@ -3,7 +3,7 @@
     "description": "Uma aplicação de ATM bancário para estudos de PHP",
     "autoload": {
         "psr-4": {
-            "Gabriel\\PhpAtm\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
