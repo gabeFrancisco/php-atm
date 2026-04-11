@@ -5,16 +5,16 @@ namespace App\Controllers;
 
 use App\DTOs\RegistroDTO;
 
-class AuthController
+class AuthController extends Controller
 {
     public function login()
     {
-        require_once __DIR__ . '/../Views/login.php';
+        $this->view('login');
     }
 
     public function registrar()
     {
-        require_once __DIR__ . '/../Views/registrar.php';
+        $this->view('registrar');
     }
 
     public function registrar_post()
