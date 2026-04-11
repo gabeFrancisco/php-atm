@@ -1,13 +1,22 @@
 <?php
 
 namespace App\Models;
-
+use App\Utils\DB;
 use PDO;
 
 class Usuario
 {
-    public function __construct(public readonly PDO $db)
+    private readonly PDO $db;
+    public function __construct()
     {
+        $this->db = DB::connect();
+    }
+
+    public function getall()
+    {
+        $stmt = $this->db->prepare('SELECT * FROM usuarios');
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     public function find(int $id)

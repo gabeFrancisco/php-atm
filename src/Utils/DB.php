@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Utils;
+
+use PDO;
+use PDOException;
+
 class DB
 {
     private static $host = '127.0.0.1';
