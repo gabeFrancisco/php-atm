@@ -6,6 +6,7 @@ use App\DTOs\RegistroDTO;
 use App\Models\Endereco;
 use App\Models\Usuario;
 use App\Utils\DB;
+use Exception;
 use InvalidArgumentException;
 
 class AuthService
@@ -19,17 +20,29 @@ class AuthService
     }
     public function createUser(RegistroDTO $dto)
     {
-        $dbEndereco = $this->endereco->insert($dto->endereco);
-        $senha = $dto->usuario->senha;
-        $senhaBcrypt = password_hash($senha, PASSWORD_BCRYPT);
-        $dto->usuario->senha = $senhaBcrypt;
+        $db = DB::connect();
+        try {
+            $db->beginTransaction();
 
-        if ($dbEndereco == null) {
-            throw new InvalidArgumentException("Erro ao criar a entidade [Endereço]");
+            $dbEndereco = $this->endereco->insert($dto->endereco);
+            $senha = $dto->usuario->senha;
+
+            //criptografa a senha usando o algoritmo BCrypt
+            $senhaBcrypt = password_hash($senha, PASSWORD_BCRYPT);
+            $dto->usuario->senha = $senhaBcrypt;
+
+            if ($dbEndereco == null) {
+                throw new InvalidArgumentException("Erro ao criar a entidade [Endereço]");
+            }
+
+            $dto->usuario->endereco_id = $dbEndereco['id'];
+
+            $this->usuario->insert($dto->usuario);
+
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            die('Erro: ' . $e->getMessage());
         }
-
-        $dto->usuario->endereco_id = $dbEndereco['id'];
-
-        $this->usuario->insert($dto->usuario);
     }
 }

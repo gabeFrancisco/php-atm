@@ -32,13 +32,15 @@ class AuthController extends Controller
 
     public function registrar_post()
     {
-        try {
-            $registroDto = RegistroDTO::fromRequest($_POST);
-            $this->authService->createUser($registroDto);
-            $usuario = new Usuario();
-            var_dump($usuario->getall());
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+        // try {
+        //     $registroDto = RegistroDTO::fromRequest($_POST);
+        //     $this->authService->createUser($registroDto);
+        //     $usuario = new Usuario();
+        //     var_dump($usuario->getall());
+        // } catch (Exception $e) {
+        //     die($e->getMessage());
+        // }
+
+        $this->view('registro_concluido');
     }
 }
