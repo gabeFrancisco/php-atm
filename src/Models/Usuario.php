@@ -33,7 +33,7 @@ class Usuario
     {
         $stmt = $this->db->prepare(
             'INSERT INTO usuarios (nome, sobrenome, email, cpf, senha, id_endereco)
-                VALUES (?,?,?,?,?,?);
+                VALUES (?,?,?,?,?,?) RETURNING nome;
             '
         );
 
@@ -45,5 +45,7 @@ class Usuario
             $dto->senha,
             $dto->endereco_id
         ]);
+
+        return $stmt->fetch();
     }
 }

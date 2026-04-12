@@ -37,9 +37,11 @@ class AuthService
 
             $dto->usuario->endereco_id = $dbEndereco['id'];
 
-            $this->usuario->insert($dto->usuario);
+            $result = $this->usuario->insert($dto->usuario);
 
             $db->commit();
+
+            return $result['nome'];
         } catch (Exception $e) {
             $db->rollBack();
             die('Erro: ' . $e->getMessage());
