@@ -25,7 +25,14 @@ class Usuario
         $stmt = $this->db->prepare('SELECT * FROM usuarios WHERE id = ?');
         $stmt->execute([$id]);
 
-        //se não achar, ele retorna null
+        return $stmt->fetch() ?: null;
+    }
+
+    public function findByCpf(int $id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM usuarios WHERE cpf = ?');
+        $stmt->execute([$id]);
+
         return $stmt->fetch() ?: null;
     }
 
