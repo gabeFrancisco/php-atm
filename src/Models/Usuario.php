@@ -28,10 +28,10 @@ class Usuario
         return $stmt->fetch() ?: null;
     }
 
-    public function findByCpf(int $id)
+    public function findByCpf(string $cpf)
     {
-        $stmt = $this->db->prepare('SELECT * FROM usuarios WHERE cpf = ?');
-        $stmt->execute([$id]);
+        $stmt = $this->db->prepare('SELECT id, nome, cpf, senha FROM usuarios WHERE cpf = ?');
+        $stmt->execute([$cpf]);
 
         return $stmt->fetch() ?: null;
     }

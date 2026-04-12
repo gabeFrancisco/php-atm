@@ -3,6 +3,7 @@
 
 namespace App\Controllers;
 
+use App\DTOs\LoginDTO;
 use App\DTOs\RegistroDTO;
 use App\Models\Usuario;
 use App\Services\AuthService;
@@ -27,7 +28,9 @@ class AuthController extends Controller
 
     public function login_post()
     {
-        var_dump($_POST);
+        $loginDto = LoginDTO::fromRequest($_POST);
+        $data = $this->authService->loginUser($loginDto);
+        var_dump($data);
     }
 
     public function registrar()

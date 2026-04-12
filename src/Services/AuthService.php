@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\DTOs\LoginDTO;
 use App\DTOs\RegistroDTO;
 use App\Models\Endereco;
 use App\Models\Usuario;
@@ -45,6 +46,22 @@ class AuthService
         } catch (Exception $e) {
             $db->rollBack();
             die('Erro: ' . $e->getMessage());
+        }
+    }
+
+    public function loginUser(LoginDTO $dto)
+    {
+        try {
+            $data = $this->usuario->findByCpf($dto->cpf);
+            if ($data == null || !password_verify($dto->senha, $data['senha'])) {
+                return false;
+            }
+
+            array_splice($data, 3, 1);
+
+            return $data;
+        } catch (Exception $e) {
+            die("ERRO: " . $e->getMessage());
         }
     }
 }
