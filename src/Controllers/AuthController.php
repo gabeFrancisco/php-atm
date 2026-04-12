@@ -3,18 +3,17 @@
 
 namespace App\Controllers;
 
-use App\DTOs\EnderecoDTO;
 use App\DTOs\RegistroDTO;
 use App\Models\Usuario;
-use App\Models\Endereco;
+use App\Services\AuthService;
 use Exception;
 
 class AuthController extends Controller
 {
-    private readonly Endereco $endereco;
+    private readonly AuthService $authService;
     public function __construct()
     {
-        $this->endereco = new Endereco();
+        $this->authService = new AuthService();
     }
     public function index()
     {
@@ -35,9 +34,9 @@ class AuthController extends Controller
     {
         try {
             $registroDto = RegistroDTO::fromRequest($_POST);
-            $enderecoDto = new EnderecoDTO('Teste', 'DTO', 'PHP', 'aaaa', 'aaa', 'bb', 'cccc');
-            $data = $this->endereco->insert($enderecoDto);
-            var_dump($data);
+            $this->authService->createUser($registroDto);
+            $usuario = new Usuario();
+            var_dump($usuario->getall());
         } catch (Exception $e) {
             die($e->getMessage());
         }

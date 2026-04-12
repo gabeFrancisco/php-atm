@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\DTOs\UsuarioDTO;
 use App\Utils\DB;
 use PDO;
 
@@ -26,5 +27,23 @@ class Usuario
 
         //se não achar, ele retorna null
         return $stmt->fetch() ?: null;
+    }
+
+    public function insert(UsuarioDTO $dto)
+    {
+        $stmt = $this->db->prepare(
+            'INSERT INTO usuarios (nome, sobrenome, email, cpf, senha, id_endereco)
+                VALUES (?,?,?,?,?,?);
+            '
+        );
+
+        $stmt->execute([
+            $dto->nome,
+            $dto->sobrenome,
+            $dto->email,
+            $dto->cpf,
+            $dto->senha,
+            $dto->endereco_id
+        ]);
     }
 }

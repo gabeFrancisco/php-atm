@@ -19,7 +19,7 @@ class Endereco
     {
         $stmt = $this->db->prepare(
             'INSERT INTO enderecos (rua, numero, complemento, bairro, cidade, estado, cep)
-             VALUES (?,?,?,?,?,?,?) RETURNING *'
+             VALUES (?,?,?,?,?,?,?) RETURNING id'
         );
 
         $stmt->execute([
