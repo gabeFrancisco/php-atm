@@ -25,6 +25,11 @@ class AuthController extends Controller
         $this->view('login');
     }
 
+    public function login_post()
+    {
+        var_dump($_POST);
+    }
+
     public function registrar()
     {
         $this->view('registrar');

@@ -10,7 +10,7 @@
 
 <body
     class="bg-linear-to-br bg-no-repeat from-blue-700 to-blue-400 flex flex-col justify-center items-center w-screen h-screen">
-    <form method="POST" action="/registrar" id="conta_form">
+    <form method="POST" id="conta_form">
         <div class="p-5 shadow-xl bg-white  rounded flex flex-col justify-center items-center">
             <img class="w-48 ml-5 mb-3" src="assets/logo.png" alt="Logo" />
             <p style="display: none" id="aviso"

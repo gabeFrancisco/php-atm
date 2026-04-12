@@ -10,6 +10,7 @@ use App\Controllers\AuthController;
 $router = new Router();
 
 $router->get("/login", [AuthController::class, 'login']);
+$router->post("/login", [AuthController::class, 'login_post']);
 $router->get("/registrar", [AuthController::class, 'registrar']);
 $router->get('/index', [AuthController::class, 'index']);
 $router->post("/registrar", [AuthController::class, 'registrar_post']);
